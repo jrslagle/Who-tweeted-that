@@ -1,1 +1,4 @@
-flask
+flask~=1.1.2
+Flask-SQLAlchemy==2.4.4
+python-decouple~=3.4
+tweepy~=3.10.0
