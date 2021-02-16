@@ -18,7 +18,7 @@ def create_app():
     def landing():
         DB.drop_all()
         DB.create_all()
-        # example_users = ['elonmusk', 'katyperry', 'rihanna', 'barackobama']
+        # example_users = ['elonmusk', 'katyperry', 'rihanna', 'barackobama', 'Hitch_Slapping']
         example_users = ['katyperry']
         for user in example_users:
             twitter.add_or_update_user(user)
