@@ -27,6 +27,25 @@
         {% endfor %}
         {% endblock %}
     </article>
+
+    <form action="/compare" method="POST">
+        <label>Twitter User A:</label>
+        <select name="selected_user_1">
+            {% for user in users %}
+                <option value="{{ user }}">{{ user.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Twitter User B:</label>
+        <select name="selected_user_2">
+            {% for user in users %}
+                <option value="{{ user }}">{{ user.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="tweet_text" placeholder="Tweet text to classify">
+        <input type="submit" value="Classify Tweet">
+
+    </form>
     <!--<script src="https://cdn.jsdelivr.net/npm/umbrellajs"/>-->
 </body>
 </html>
