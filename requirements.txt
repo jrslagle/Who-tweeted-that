@@ -1,9 +1,9 @@
-en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.1.0/en_core_web_sm-2.1.0.tar.gz
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.0.0/en_core_web_sm-3.0.0.tar.gz#egg=en_core_web_sm
 flask~=1.1.2
 Flask-SQLAlchemy==2.4.4
 gunicorn
 numpy
 python-decouple~=3.4
 scikit-learn~=0.23.2
-spacy
+spacy>=3.0.0,<4.0.0
 tweepy~=3.10.0
