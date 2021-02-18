@@ -1,6 +1,6 @@
+en-core-web-sm
 flask~=1.1.2
 Flask-SQLAlchemy==2.4.4
-unicorn
 gunicorn
 numpy
 python-decouple~=3.4
