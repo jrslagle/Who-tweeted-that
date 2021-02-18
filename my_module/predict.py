@@ -1,6 +1,6 @@
-from sklearn.linear_model import LogisticRegression
-from models import User
 import numpy as np
+from sklearn.linear_model import LogisticRegression
+from my_module.models import User
 
 
 def predict_user(user1_handle, user2_handle, tweet_text, nlp):

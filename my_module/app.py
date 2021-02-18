@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request
-from models import DB, User  # , insert_data
-from twitter import Twitter
-from nlp_model import NLP
-from predict import predict_user
 import time
 import numpy as np
 import logging
+from my_module.models import DB, User  # , insert_data
+from my_module.twitter import Twitter
+from my_module.nlp_model import NLP
+from my_module.predict import predict_user
+
 
 def create_app():
 

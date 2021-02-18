@@ -1,6 +1,6 @@
 import tweepy
 from decouple import config
-from models import DB, Tweet, User
+from my_module.models import DB, Tweet, User
 
 class Twitter():
     def __init__(self):
