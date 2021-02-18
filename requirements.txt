@@ -5,4 +5,5 @@ gunicorn
 numpy
 python-decouple~=3.4
 scikit-learn~=0.23.2
+spacy
 tweepy~=3.10.0

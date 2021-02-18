@@ -11,5 +11,4 @@ class NLP():
         # print(f"Tweet: '{tweet_text}'")
         doc = self.nlp(tweet_text)
         # print([(w.text, w.pos_) for w in doc])  # prints each word and it's part of speech
-        vector = doc.vector
-        return vector
+        return doc.vector
