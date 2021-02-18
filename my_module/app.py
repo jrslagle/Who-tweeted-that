@@ -5,21 +5,22 @@ from nlp_model import NLP
 from predict import predict_user
 import time
 import numpy as np
+import logging
 
 def create_app():
-    times = [time.time()]
 
-    app = Flask("Twitoff-james-slagle")
+    app = Flask(__name__)
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
+
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    # times.append(time.time())
     DB.init_app(app)
-    # times.append(time.time())
     twitter = Twitter()
-    times.append(time.time())
+    times = [time.time()]
     nlp = NLP()
     times.append(time.time())
-    # times = np.array(times)
     times = np.array(times)-times[0]
     print(f"Loading times: {times}")
 
