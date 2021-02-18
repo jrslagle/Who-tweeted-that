@@ -12,6 +12,7 @@ def predict_user(user1_handle, user2_handle, tweet_text, nlp):
     y = np.concatenate([np.zeros(len(user1.tweets)),
                         np.ones(len(user2.tweets))])
     model = LogisticRegression()
+
     model.fit(X, y)
 
     tweet_vect = list(nlp.tweet_to_vec(tweet_text))
