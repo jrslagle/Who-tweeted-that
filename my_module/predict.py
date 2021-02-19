@@ -12,12 +12,12 @@ def predict_user(user1_handle, user2_handle, tweet_text, nlp):
     user2_vectors = np.array([tweet.vect for tweet in user2.tweets])
     len_user1 = len(user1_vectors)
     len_user2 = len(user2_vectors)
-    print(f"Got {len_user1} tweets for {user1.name} and {len_user2} tweets for {user2.name}")
+    print(f"Got {len_user1} tweets for {user1.name} and {len_user2} tweets for {user2.name} for a total of {len_user1+len_user2} tweets")
 
     X = np.vstack([user1_vectors, user2_vectors])
-    print(f"X before reshape = {X.shape}")
     # X = np.expand_dims(X, axis=1)
-    # print(f"X after reshape = {X.shape}")
+    X = X.reshape(-1, 1)
+    # X = X.reshape(1, -1)
     y = np.concatenate([np.zeros(len(user1_vectors)),
                         np.ones(len(user2_vectors))])
     print(f"shapes: X = {X.shape}, y = {y.shape}")
