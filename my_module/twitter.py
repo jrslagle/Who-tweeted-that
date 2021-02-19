@@ -15,23 +15,25 @@ class Twitter():
         try:
             twitter_user = self.api.get_user(handle)
             # a handy little user stats printout
-            print(f'{twitter_user.name} (@{twitter_user.screen_name}) has {twitter_user.followers_count:,d} '
-                  f'followers and has made {twitter_user.statuses_count:,d} tweets')
+            # print(f'{twitter_user.name} (@{twitter_user.screen_name}) has {twitter_user.followers_count:,d} '
+            #       f'followers and has made {twitter_user.statuses_count:,d} tweets')
 
             # The old method
             # db_user = User.query.get(twitter_user.id) or User(id=twitter_user.id, name=handle)
 
             # existing_user = User.query.get(twitter_user.id)
-            existing_user = User.query.get(handle)
-            print(f"existing user = {existing_user}")
-            print(f"User.query = {User.query}")
+            # existing_user = User.query.get(handle)
+            # existing_user = User.query.filter(User.name == handle).first()
+            existing_user = User.query.filter(User.name == handle).first()
+            print(f'fetching handle {handle} and found {existing_user}')
+            # print(f"existing user = {existing_user}")
 
             if existing_user:
                 pass
             else:
                 # if user isn't in database, create a new one
                 new_user = User(id=twitter_user.id, name=handle)
-                print(f"new user = {new_user}")
+                # print(f"new user = {new_user}")
 
                 DB.session.add(new_user)
 

@@ -4,16 +4,27 @@ from my_module.models import User
 
 
 def predict_user(user1_handle, user2_handle, tweet_text, nlp):
-    user1 = User.query.filter(User.name == user1_handle).one()
-    user2 = User.query.filter(User.name == user2_handle).one()
+
+    user1 = User.query.filter(User.name == user1_handle).first()
+    user2 = User.query.filter(User.name == user2_handle).first()
+
     user1_vectors = np.array([tweet.vect for tweet in user1.tweets])
     user2_vectors = np.array([tweet.vect for tweet in user2.tweets])
-    X = np.vstack([user1_vectors, user2_vectors])
-    y = np.concatenate([np.zeros(len(user1.tweets)),
-                        np.ones(len(user2.tweets))])
-    model = LogisticRegression()
+    len_user1 = len(user1_vectors)
+    len_user2 = len(user2_vectors)
+    print(f"Got {len_user1} tweets for {user1.name} and {len_user2} tweets for {user2.name}")
 
+    X = np.vstack([user1_vectors, user2_vectors])
+    print(f"X before reshape = {X.shape}")
+    # X = np.expand_dims(X, axis=1)
+    # print(f"X after reshape = {X.shape}")
+    y = np.concatenate([np.zeros(len(user1_vectors)),
+                        np.ones(len(user2_vectors))])
+    print(f"shapes: X = {X.shape}, y = {y.shape}")
+    model = LogisticRegression()
+    print("initialized the model")
     model.fit(X, y)
+    print("fit the model")
 
     tweet_vect = list(nlp.tweet_to_vec(tweet_text))
     y_pred = model.predict(tweet_vect)

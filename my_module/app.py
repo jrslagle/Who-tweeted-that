@@ -34,8 +34,6 @@ def create_app():
                          'barackobama',  # Barack Obama
                          'katyperry',  # KATY PERRY
                          'Hitch_Slapping',  # Christopher Hitchens quotes
-                         'SamMakingSense',  # Sam Harris quotes
-                         'RWEmersonQuotes',  # Ralph Waldo Emerson quotes
                          ]
         for user in example_users:
             twitter.add_or_update_user(user, nlp)
@@ -56,6 +54,8 @@ def create_app():
         tweet_text = request.values['tweet_text']
         if user1 == user2:
             message = 'Cannot compare the same user to itself'
+        elif len(tweet_text) == 0:
+            message = 'No text was passed in.'
         else:
             prediction = predict_user(user1, user2, tweet_text, nlp)
             message = f"{prediction} is more likely to have said {tweet_text}"
